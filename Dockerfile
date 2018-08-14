@@ -1,8 +1,7 @@
-FROM alpine:3.4
+FROM alpine:3.8
 MAINTAINER Sebastian Braun <sebastian@elmnt.de>
 
-RUN apk add --update python3 \
- && rm -rf /var/cache/apk/*
+RUN apk add --no-cache python3
 
 EXPOSE 25
 
