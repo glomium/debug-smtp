@@ -1,7 +1,12 @@
 FROM alpine:3.10.3
 MAINTAINER Sebastian Braun <sebastian.braun@fh-aachen.de>
+RUN apk add --no-cache ca-certificates
+# base alpine template
 
+ENV PYTHONUNBUFFERED=1
+WORKDIR /usr/src/app
 RUN apk add --no-cache python3
+# base python template
 
 EXPOSE 25
 
