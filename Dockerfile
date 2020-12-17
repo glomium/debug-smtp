@@ -1,11 +1,18 @@
-FROM alpine:3.11.3
+# vim:set ft=dockerfile:
+ARG UBUNTU=rolling
+FROM ubuntu:$UBUNTU
 MAINTAINER Sebastian Braun <sebastian.braun@fh-aachen.de>
-# base alpine template
+
+ENV DEBIAN_FRONTEND noninteractive
+ENV LANG en_US.UTF-8
+
+RUN apt-get update && apt-get install --no-install-recommends -y -q \
+    python3 \
+&& apt-get clean \
+&& rm -rf /var/lib/apt/lists/*
 
 ENV PYTHONUNBUFFERED=1
 WORKDIR /usr/src/app
-RUN apk add --no-cache python3
-# base python template
 
 EXPOSE 25
 
